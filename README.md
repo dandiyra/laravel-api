@@ -181,7 +181,7 @@ $ {
   }
 ```
 ## Delete User
-Buka tab request baru, lalu masukkan url http://127.0.01:8000/api/user/delere/id, gantilah id dengan angka yang sesuai dengan *id user* yang ingin anda hapus *anda bisa melihat id user di List User yg sudah kita tampilkan di tab *Menampilkan User* atau anda bisa langsung melihatnya di database*, lalu ubahlah methodnya menjadi *DELETE*. Kemudian klik tab Headers Lalu tambahkan *key: Accept* dengan *value: application/json*. Kemudian klik tab *Authorization* pilih *Type : Bearer Token* lalu isi dengan token yg di dapatkan ketika proses login. Kemudian klik tab Body lalu pilih *raw* dengan format *JSON*,
+Buka tab request baru, lalu masukkan url http://127.0.01:8000/api/user/delete/id, gantilah id dengan angka yang sesuai dengan *id user* yang ingin anda hapus *anda bisa melihat id user di List User yg sudah kita tampilkan di tab *Menampilkan User* atau anda bisa langsung melihatnya di database*, lalu ubahlah methodnya menjadi *DELETE*. Kemudian klik tab Headers Lalu tambahkan *key: Accept* dengan *value: application/json*. Kemudian klik tab *Authorization* pilih *Type : Bearer Token* lalu isi dengan token yg di dapatkan ketika proses login. Kemudian klik tab Body lalu pilih *raw* dengan format *JSON*,
 Jika Berhasil : Check di database anda apakah user yang anda delete sudah ter delete di database yang anda buat.
 ```bash
 $ {
