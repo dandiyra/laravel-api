@@ -24,7 +24,7 @@ Repositori ini dibangun dengan Laravel versi 8 ke atas. Setelah melakukan fork d
 
 * masuk ke direktori laravel_crud
 ```bash
-$ cd laravel_crud
+$ cd laravel-api
 ```
 * jalankan perintah composer install untuk mendownload direktori vendor
 ```bash
