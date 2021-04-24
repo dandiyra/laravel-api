@@ -1,62 +1,190 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# 0. Perbedaan antara API, REST API, dan RESTful API
+API adalah sebuah software yang mengintegrasikan antara aplikasi yang kita buat dengan aplikasi yang lain. Tujuan pembuatannya yaitu untuk saling berbagi data antar aplikasi   yang sudah diintegrasikan tersebut.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sedangkan REST API merupakan salah satu dari desain arsitektur yang terdapat di dalam API itu sendiri. Dan cara kerja dari RESTful API yaitu REST client akan Melakukan akses     pada data/resource pada REST server dimana masing-masing resource. Atau data/resource tersebut akan dibedakan oleh sebuah global ID atau URIs (Universal Resource Identifiers).
 
-## About Laravel
+Jadi, Nantinya data yang diberikan oleh REST server itu bisa berupa format text, JSON atau XML. Dan saat ini format yang paling populer dan paling banyak digunakan adalah       format JSON.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+* Adapun metode HTTP yang secara umum dipakai dalam REST api adalah:
+```bash
+$ POST, berfungsi untuk membuat sebuah data/resource baru di REST server
+```
+```bash
+$ PUT, berfungsi untuk memperbaharui data/resource di REST server
+```
+```bash
+$ DELETE, berfungsi untuk menghapus data/resource dari REST serve
+```
+```bash
+$ OPTIONS, berfungsi untuk mendapatkan operasi yang disupport pada resource dari REST server.
+```
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+# 1. Setup
+Repositori ini dibangun dengan Laravel versi 8 ke atas. Setelah melakukan fork dan clone dari repositori ini, lakukanlah langkah-langkah di bawah ini untuk menjalankan project. 
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* masuk ke direktori laravel_crud
+```bash
+$ cd laravel_crud
+```
+* jalankan perintah composer install untuk mendownload direktori vendor
+```bash
+$ composer install
+```
+* buat file .env lalu isi file tersebut dengan seluruh isi dari file .env.example
 
-## Learning Laravel
+* jalankan perintah php artisan key generate
+```bash
+$ php artisan key:generate
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+* Tambahan: Untuk pengerjaan di laptop/PC masing-masing, sesuaikan nama database, username dan password nya di file .env dengan database kalian. 
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Setelah itu lakukan migrate ke database
+```bash
+$ php artisan migrate
+```
 
-## Laravel Sponsors
+jangan lupa untuk menjalankan server laravel untuk memulai.
+```bash
+$ php artisan serve
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-### Premium Partners
+# 2. Testing API menggunakan Postman
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
+## Register User 
+Buka aplikasi postman kalian, Buka tab request baru, lalu masukkan url http://127.0.01:8000/api/register, lalu ubahlah methodnya menjadi *POST*. Kemudian klik tab Headers Lalu tambahkan *key: Accept* dengan *value: application/json*. Kemudian klik tab Body lalu pilih *raw* dengan format *JSON*,
 
-## Contributing
+Tuliskan: *name, email dan password. Isi sesuai dengan data yg ingin kalian buat*
+```bash
+$ {
+    "name" : "dandy112", 
+    "email" : "dandy112@gmail.com",
+    "password" : "123456"
+  }
+```
+Jika Berhasil: 
+```bash
+$ {
+    "status_code": 200,
+    "message": "Berhasil"
+  }
+```
+Jika Gagal :
+```bash
+$ {
+    "status_code": 400,
+    "message": "Gagal"
+  }
+```
+## Login User
+Buka tab request baru, lalu masukkan url http://127.0.01:8000/api/login, lalu ubahlah methodnya menjadi *POST*. Kemudian klik tab Headers Lalu tambahkan *key: Accept* dengan *value: application/json*. Kemudian klik tab Body lalu pilih *raw* dengan format *JSON*,
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Tuliskan: *Isi sesuai dengan data yg kalian buat*
+```bash
+$ {
+    "name" : "dandy112", 
+    "email" : "dandy112@gmail.com",
+    "password" : "123456"
+  }
+```
+Jika Berhasil:
+```bash
+$ {
+    "success": true,
+    "user": {
+        "id": 4,
+        "name": "DANDY112",
+        "email": "dandy112@gmail.com",
+        "email_verified_at": null,
+        "created_at": "2021-04-24T07:23:10.000000Z",
+        "updated_at": "2021-04-24T07:23:10.000000Z"
+    },
+    "token": "12|Lvm66FZHiuHX6zrBteL0vZMrQPWT24QlOCwefPfC"
+  }
+```
+Jika Gagal :
+```bash
+$ {
+    "success": false,
+    "message": [
+        "Email atau Password salah"
+    ]
+  }
+```
+## Menampilkan List User
+Buka tab request baru, lalu masukkan url http://127.0.01:8000/api/user, lalu ubahlah methodnya menjadi *GET*. Kemudian klik tab Headers Lalu tambahkan *key: Accept* dengan *value: application/json*. Kemudian klik tab *Authorization* pilih *Type : Bearer Token* lalu isi dengan token yg di dapatkan ketika proses login. Kemudian klik tab Body lalu pilih *raw* dengan format *JSON*, Run.
 
-## Code of Conduct
+Jika Berhasil: List User akan muncul sesuai dengan data yang sudah anda buat.
+```bash
+$ [
+    [
+        {
+            "id": 1,
+            "name": "DANDY",
+            "email": "dandy@gmail.com",
+            "email_verified_at": null,
+            "created_at": "2021-04-24T07:17:36.000000Z",
+            "updated_at": "2021-04-24T07:17:36.000000Z"
+        },
+        {
+            "id": 3,
+            "name": "DANDY1",
+            "email": "dandy1@gmail.com",
+            "email_verified_at": null,
+            "created_at": "2021-04-24T07:18:13.000000Z",
+            "updated_at": "2021-04-24T07:18:13.000000Z"
+        },
+        {
+            "id": 4,
+            "name": "DANDY112",
+            "email": "dandy112@gmail.com",
+            "email_verified_at": null,
+            "created_at": "2021-04-24T07:23:10.000000Z",
+            "updated_at": "2021-04-24T07:23:10.000000Z"
+        }
+    ]
+]
+```
+## Input Data Tambah User
+Buka tab request baru, lalu masukkan url http://127.0.01:8000/api/user/store, lalu ubahlah methodnya menjadi *POST*. Kemudian klik tab Headers Lalu tambahkan *key: Accept* dengan *value: application/json*. Kemudian klik tab *Authorization* pilih *Type : Bearer Token* lalu isi dengan token yg di dapatkan ketika proses login. Kemudian klik tab Body lalu pilih *raw* dengan format *JSON*, 
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Tuliskan: *Isi sesuai dengan data yg kalian buat*
+```bash
+$ {
+    "name" : "DANDYAPI",
+    "email" : "dandyAPI@gmail.com",
+    "password" : "12345678"
+  }
+```
+Jika Berhasil : Check di database anda apakah user baru yang anda input sudah ada di database yang anda buat.
+```bash
+$ {
+    "Post Berhasil Disimpan"
+  }
+```
+## Update Data User
+Buka tab request baru, lalu masukkan url http://127.0.01:8000/api/user/update/id, gantilah id dengan angka yang sesuai dengan *id user* *anda bisa melihat id user di List User yg sudah kita tampilkan di tab *Menampilkan User* atau anda bisa langsung melihatnya di database*, lalu ubahlah methodnya menjadi *POST*. Kemudian klik tab Headers Lalu tambahkan *key: Accept* dengan *value: application/json*. Kemudian klik tab *Authorization* pilih *Type : Bearer Token* lalu isi dengan token yg di dapatkan ketika proses login. Kemudian klik tab Body lalu pilih *raw* dengan format *JSON*,
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Tuliskan: *Isi sesuai dengan data yg kalian buat*
+```bash
+$ {
+    "name" : "DandyUpdate",
+    "email" : "dandyUpdate@gmail.com",
+    "password" : "12345678"
+  }
+```
+Jika Berhasil : Check di database anda apakah user yang anda update sudah ter update di database yang anda buat.
+```bash
+$ {
+    "Post Berhasil Disimpan"
+  }
+```
+## Delete User
+Buka tab request baru, lalu masukkan url http://127.0.01:8000/api/user/delere/id, gantilah id dengan angka yang sesuai dengan *id user* yang ingin anda hapus *anda bisa melihat id user di List User yg sudah kita tampilkan di tab *Menampilkan User* atau anda bisa langsung melihatnya di database*, lalu ubahlah methodnya menjadi *DELETE*. Kemudian klik tab Headers Lalu tambahkan *key: Accept* dengan *value: application/json*. Kemudian klik tab *Authorization* pilih *Type : Bearer Token* lalu isi dengan token yg di dapatkan ketika proses login. Kemudian klik tab Body lalu pilih *raw* dengan format *JSON*,
+Jika Berhasil : Check di database anda apakah user yang anda delete sudah ter delete di database yang anda buat.
+```bash
+$ {
+    "Berhasil Menghapus Data"
+  }
+```
