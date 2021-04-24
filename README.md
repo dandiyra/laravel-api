@@ -19,7 +19,22 @@ $ DELETE, berfungsi untuk menghapus data/resource dari REST serve
 $ OPTIONS, berfungsi untuk mendapatkan operasi yang disupport pada resource dari REST server.
 ```
 
-# 1. Setup
+# 1. Jenis Jenis Web API 
+
+1. REST (RESTful) API
+singkatan dari transfer status representasional dan mengirimkan data menggunakan format JSON yang ringan. Sebagian besar API publik menggunakan ini karena kinerjanya yang cepat, dapat diandalkan dan kemampuan untuk menskalakan dengan menggunakan kembali komponen modular tanpa mempengaruhi sistem secara keseluruhan.
+
+2. SOAP (Simple Object Access Protocol)
+Simple Object Access Protocol sedikit lebih rumit daripada REST karena memerlukan lebih banyak informasi tentang cara mengirim pesannya. API ini telah ada sejak akhir 1990-an dan menggunakan XML untuk mentransfer data. Ini membutuhkan aturan ketat dan keamanan tingkat lanjut yang membutuhkan lebih banyak bandwidth.
+Protokol ini tidak memiliki kemampuan untuk melakukan cache, memiliki komunikasi yang ketat dan membutuhkan setiap informasi tentang interaksi sebelum panggilan apa pun dianggap diproses.
+
+3. XML-RPC (eXtensible Markup Language – Remote Procedure Call)
+Dikenal sebagai bahasa markup yang dapat dikembangkan – Panggilan Prosedur Jarak Jauh. Protokol ini menggunakan format XML tertentu untuk mentransfer data dan lebih tua dan lebih sederhana dari SOAP. Klien melakukan RPC dengan mengirim permintaan HTTP ke server yang mengimplementasikan XML-RPC dan menerima respons HTTP.
+
+4. JSON-RPC
+Mirip dengan XML-RPC karena keduanya bekerja dengan cara yang sama kecuali protokol ini menggunakan JSON dan bukan format XML. Klien biasanya perangkat lunak yang memanggil metode tunggal dari sistem jarak jauh.
+
+# 2. Setup
 Repositori ini dibangun dengan Laravel versi 8 ke atas. Setelah melakukan fork dan clone dari repositori ini, lakukanlah langkah-langkah di bawah ini untuk menjalankan project. 
 
 * masuk ke direktori laravel_crud
@@ -50,7 +65,7 @@ $ php artisan serve
 ```
 
 
-# 2. Testing API menggunakan Postman
+# 3. Testing API menggunakan Postman
 
 ## Register User 
 Buka aplikasi postman kalian, Buka tab request baru, lalu masukkan url http://127.0.01:8000/api/register, lalu ubahlah methodnya menjadi *POST*. Kemudian klik tab Headers Lalu tambahkan *key: Accept* dengan *value: application/json*. Kemudian klik tab Body lalu pilih *raw* dengan format *JSON*,
