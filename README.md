@@ -37,7 +37,7 @@ Mirip dengan XML-RPC karena keduanya bekerja dengan cara yang sama kecuali proto
 # 2. Setup
 Repositori ini dibangun dengan Laravel versi 8 ke atas. Setelah melakukan fork dan clone dari repositori ini, lakukanlah langkah-langkah di bawah ini untuk menjalankan project. 
 
-* masuk ke direktori laravel_crud
+* masuk ke direktori laravel-api
 ```bash
 $ cd laravel-api
 ```
