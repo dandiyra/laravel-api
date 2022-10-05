@@ -24,6 +24,10 @@ Setelah itu lakukan migrate ke database
 ```bash
 $ php artisan migrate
 ```
+Jalankan Seeder
+```bash
+$ php artisan db:seed
+```
 Install Passport Client Token
 ```bash
 $ php artisan passport:install
