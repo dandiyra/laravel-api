@@ -34,7 +34,7 @@ jangan lupa untuk menjalankan server laravel untuk memulai.
 $ php artisan serve
 ```
 
-# 3. Testing API menggunakan Postman
+# 2. Testing API menggunakan Postman
 
 ## Login User
 Buka tab request baru, lalu masukkan url http://127.0.01:8000/api/login, lalu ubahlah methodnya menjadi *POST*. Kemudian klik tab Headers Lalu tambahkan *key: Accept* dengan *value: application/json*. Kemudian klik tab Body lalu pilih *raw* dengan format *JSON*,
