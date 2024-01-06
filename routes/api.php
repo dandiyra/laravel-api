@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MovieController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +21,14 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::post('login', [UserController::class, 'login']);
+
+//Movies
+Route::get('movies', [MovieController::class, 'show']);
+Route::get('movies/:id', [MovieController::class, 'getById']);
+Route::post('movies', [MovieController::class, 'store']);
+Route::put('movies/:id', [MovieController::class, 'update']);
+Route::delete('movies/:id', [MovieController::class, 'destroy']);
+
 
 Route::group(['middleware' => 'auth:api'], function () {
     //User
