@@ -104,7 +104,7 @@ $ {
     }
 }
 ```
-## Update Data User
+## Update movie
 Buka tab request baru, lalu masukkan url http://127.0.0.1:8000/api/movie/:id, lalu ubahlah methodnya menjadi *PUT*. Kemudian klik tab Headers Lalu tambahkan *key: Accept* dengan *value: application/json*. Kemudian klik tab Body lalu pilih *raw* dengan format *JSON*,
 
 Tuliskan: 
@@ -132,7 +132,7 @@ $ {
     }
 }
 ```
-## Delete User
+## Delete movie
 Buka tab request baru, lalu masukkan url http://127.0.0.1:8000/api/, lalu ubahlah methodnya menjadi *DELETE*. Kemudian klik tab Headers Lalu tambahkan *key: Accept* dengan *value: application/json*. Kemudian klik tab Body lalu pilih *raw* dengan format *JSON*,
 
 Tuliskan: 
